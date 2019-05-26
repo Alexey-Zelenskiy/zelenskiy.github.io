@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {Security, SecureRoute, ImplicitCallback} from '@okta/okta-react';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Navbar from './components/layout/Navbar';
 import Home from './components/pages/Home';
 import Country from './components/pages/Country';
 import Staff from './components/pages/Staff';
-import Login from './components/auth/Login';
+
 
 import './App.css';
 
@@ -30,7 +31,26 @@ import Spain from "./components/pages/Countrys/Spain";
 import HelloWorldPage from './components/HelloWorldPage/HelloWorldPage'
 import CounterPage from './components/CounterPage/CounterPage'
 import TimePage from './components/TimePage'
+import Register from './components/pages/Register'
+import Login from './components/pages/Login'
+import setAuthToken from './components/setAuthToken'
 
+import jwt_decode from 'jwt-decode';
+import store from './store';
+
+import { logoutUser, setCurrentUser } from './actions/authentication'
+
+if(localStorage.jwtToken) {
+  setAuthToken(localStorage.jwtToken);
+  const decoded = jwt_decode(localStorage.jwtToken);
+  store.dispatch(setCurrentUser(decoded));
+
+  const currentTime = Date.now() / 1000;
+  if(decoded.exp < currentTime) {
+    store.dispatch(logoutUser());
+    window.location.href = '/login'
+  }
+}
 function onAuthRequired({history}) {
     history.push('/login');
 }
@@ -38,7 +58,7 @@ function onAuthRequired({history}) {
 class App extends Component {
     render() {
         return (
-            <Router>
+          <Router>
                 <Security
                     issuer="https://dev-562705.oktapreview.com/oauth2/default"
                     client_id="0oai7xd931LzK5Lmr0h7"
@@ -65,6 +85,8 @@ class App extends Component {
                             <Route path="/spain" exact={true} component={Spain}/>
                         </div>
                         <Route path="/relax" exact={true} component={Relax}/>
+                        <Route path="/register" exact={true} component={Register}/>
+                        <Route path="/auth" exact={true} component={Login}/>
                         <Route path="/staffs" exact={true} component={HelloWorldPage}/>
                         <Route path="/user" exact={true} component={Profile}/>
                         <Route path='question' exact={true} component={Question}/>

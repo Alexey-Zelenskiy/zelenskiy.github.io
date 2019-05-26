@@ -15,16 +15,13 @@ export class User extends React.Component {
 
     if (name) {
       return <div><p>Привет, {name}!</p>
-        <button className="btn" onClick={this.props.handleLogout}>
-          Выйти
-        </button>
       </div>
     } else {
       return (
         <div>
-          <button className="btn" onClick={this.props.handleLogin}>
-            Войти
-          </button>
+          <p onClick={this.props.handleLogin}>
+            Авторизация
+          </p>
         </div>
 
       )
@@ -32,7 +29,7 @@ export class User extends React.Component {
   }
 
   render() {
-    return <div className="ib user">{this.renderTemplate()}</div>
+    return <div className="button special">{this.renderTemplate()}</div>
   }
 }
 

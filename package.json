@@ -5,10 +5,24 @@
   "dependencies": {
     "@okta/okta-react": "^1.1.4",
     "@okta/okta-signin-widget": "^2.14.0",
+    "axios": "^0.18.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.3.1",
+    "classnames": "^2.2.6",
+    "express": "^4.17.0",
     "google-maps-react": "^2.0.2",
+    "gravatar": "^1.8.0",
     "isomorphic-fetch": "latest",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^2.2.0",
     "mdbreact": "^4.9.0",
+    "moment": "2.18.1",
+    "mongodb": "^3.2.6",
+    "mongoose": "^5.5.11",
     "normalize.css": "^8.0.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
     "prop-types": "latest",
     "react": "^16.6.3",
     "react-animated-slider": "^1.1.4",
@@ -43,17 +57,21 @@
     "reactstrap": "^7.1.0",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
+    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "semantic-ui-react": "^0.84.0",
     "three": "^0.104.0",
+    "validator": "^11.0.0",
     "yandex-map-react": "^1.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "nodemon server.js"
   },
+  "proxy": "http://localhost:5000",
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -62,5 +80,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
 }

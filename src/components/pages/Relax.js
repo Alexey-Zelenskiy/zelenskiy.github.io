@@ -12,16 +12,7 @@ import Navbar from '../layout/Navbar'
 
 
 class Relax extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      scene: {}
-    };
-  }
-  componentDidMount() {
-    const { scene } = this.refs;
-    this.setState({ scene });
-  }
+
   render() {
     const { user, page, getPhotosAction, handleLoginAction } = this.props
     let width = window.innerWidth;

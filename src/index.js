@@ -8,10 +8,13 @@ import {applyMiddleware, createStore} from 'redux'
 import {Provider} from "react-redux";
 import rootReducer from './Redux/reducer'
 import thunk from "redux-thunk";
+import jwt_decode from 'jwt-decode';
 import states from "./Redux/reducer/states";
 import photos from "./Redux/reducer/photos";
+import store from './store'
 
-const  store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
+
+
 ReactDOM.render(<Provider store={store}><App /></Provider>    , document.getElementById('root'));
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
